@@ -1,7 +1,6 @@
 // Recipe data for the Recipes section.
 // "breakfast" entries are adapted from the Fujiwhara Savoury Breakfast
-// Recipes PDF. "lunch" and "dinner" are placeholders to be expanded
-// later in the same style.
+// Recipes PDF. "lunch" and "dinner" entries follow the same style.
 const RECIPES = {
   breakfast: [
     {
@@ -488,128 +487,172 @@ const RECIPES = {
   ],
   lunch: [
     {
-      title: "Placeholder: Salmon & Lentil Salad",
-      description: "A bright, satisfying midday plate — to be refined later.",
+      title: "The Big Green Power Bowl",
+      description: "Salmon, lentils and greens in one bowl — eat the leaves first and let the rest follow for a flatter glucose curve.",
       tags: ["Omega-3", "Iron", "Fibre"],
+      meta: "Makes 1 portion | Prep 10 mins | Cook 10 mins",
       ingredients: [
-        "1 fillet salmon, cooked",
-        "1/2 cup cooked lentils",
-        "Mixed leafy greens",
-        "Lemon & olive oil dressing"
+        "1 fillet salmon (about 120g)",
+        "1 tbsp olive oil",
+        "½ x 400g tin lentils, drained and rinsed",
+        "Large handful mixed leafy greens (spinach, rocket, watercress)",
+        "¼ cucumber, sliced",
+        "Squeeze lemon juice",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two.",
-        "Placeholder method step three."
+        "Heat the olive oil in a frying pan and cook the salmon for 3-4 minutes each side until just cooked through. Flake into large pieces.",
+        "Arrange the leafy greens and cucumber in a bowl and eat a few mouthfuls first.",
+        "Top with the lentils and flaked salmon, squeeze over the lemon juice and season with salt and pepper."
       ]
     },
     {
-      title: "Placeholder: Tofu & Quinoa Bowl",
-      description: "A plant-powered lunch with staying power — to be refined later.",
-      tags: ["Protein", "Calcium"],
+      title: "Build-Your-Own Buddha Bowl",
+      description: "Tofu, quinoa and broccoli with a tahini drizzle — a plant-powered lunch with enough staying power to get you to dinner.",
+      tags: ["Protein", "Calcium", "Fibre"],
+      meta: "Makes 1 portion | Prep 5 mins | Cook 12 mins",
       ingredients: [
-        "1/2 block tofu",
-        "1/2 cup cooked quinoa",
-        "Steamed broccoli",
-        "Tahini dressing"
+        "100g firm tofu, cubed",
+        "1 tbsp olive oil",
+        "½ cup cooked quinoa",
+        "1 cup broccoli florets, steamed",
+        "1 tbsp tahini",
+        "Squeeze lemon juice",
+        "1 tbsp water (to loosen the tahini)",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two."
+        "Heat the olive oil in a frying pan and fry the tofu cubes for 5-6 minutes, turning occasionally, until golden on all sides.",
+        "Steam the broccoli for 4-5 minutes until just tender.",
+        "Whisk the tahini with the lemon juice and water until smooth and pourable.",
+        "Arrange the quinoa, broccoli and tofu in a bowl, drizzle with the tahini dressing and season with salt and pepper."
       ]
     },
     {
-      title: "Placeholder: Chicken & Spinach Wrap",
-      description: "An easy, portable midday option — to be refined later.",
-      tags: ["Protein", "Iron"],
+      title: "No-Naked-Wrap Chicken Wrap",
+      description: "Grilled chicken, spinach and hummus rolled into a wholegrain wrap — proof that a carb is always better with company.",
+      tags: ["Protein", "Iron", "Fibre"],
+      meta: "Makes 1 portion | Prep 8 mins",
       ingredients: [
-        "Wholegrain wrap",
-        "Sliced grilled chicken",
-        "Handful of spinach",
-        "Hummus"
+        "1 wholegrain wrap",
+        "2 tbsp hummus",
+        "Large handful spinach leaves",
+        "1 cooked chicken breast, sliced",
+        "¼ red capsicum, thinly sliced",
+        "Squeeze lemon juice",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two."
+        "Lay the wrap flat and spread the hummus evenly over the surface.",
+        "Scatter over the spinach, then layer on the chicken and capsicum.",
+        "Squeeze over a little lemon juice, season with salt and pepper, then roll tightly and slice in half to serve."
       ]
     },
     {
-      title: "Placeholder: Sardine & Bean Salad",
-      description: "Tinned-pantry simplicity with a nutrient punch — to be refined later.",
+      title: "Tinned-Pantry Sardine & Bean Salad",
+      description: "Tinned-pantry simplicity with a serious nutrient punch — the kind of lunch you can make from what's already in the cupboard.",
       tags: ["Omega-3", "Calcium", "Fibre"],
+      meta: "Makes 1 portion | Prep 6 mins",
       ingredients: [
-        "1 tin sardines",
-        "1 cup mixed beans",
-        "Cherry tomatoes",
-        "Olive oil & lemon"
+        "1 x 90g tin sardines in olive oil, drained",
+        "½ x 400g tin mixed beans, drained and rinsed",
+        "Handful cherry tomatoes, halved",
+        "Small handful rocket",
+        "1 tbsp olive oil",
+        "Squeeze lemon juice",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two."
+        "Toss the rocket and cherry tomatoes in a bowl and eat a few mouthfuls first.",
+        "Add the mixed beans and sardines on top.",
+        "Drizzle with olive oil and lemon juice, and season generously with salt and pepper."
       ]
     }
   ],
   dinner: [
     {
-      title: "Placeholder: Baked Salmon & Greens",
-      description: "A simple weeknight dinner — to be refined later.",
-      tags: ["Omega-3", "Vitamin D"],
+      title: "Sheet-Pan Salmon & Greens",
+      description: "One tray, one wash-up — salmon and greens roasted together for a steady-glucose dinner with almost no effort.",
+      tags: ["Omega-3", "Vitamin D", "Fibre"],
+      meta: "Makes 1 portion | Prep 5 mins | Cook 15 mins",
       ingredients: [
-        "1 fillet salmon",
-        "2 cups mixed greens",
+        "1 fillet salmon (about 120-150g)",
+        "2 cups mixed greens (broccoli, green beans, courgette), chopped",
         "1 tbsp olive oil",
-        "Lemon wedge"
+        "1 clove garlic, sliced",
+        "Lemon wedge",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two.",
-        "Placeholder method step three."
+        "Preheat oven to 200°C/180°C fan. Toss the greens with the olive oil and garlic and spread on a baking tray.",
+        "Roast for 8 minutes, then push the vegetables to one side and add the salmon to the tray.",
+        "Season the salmon with salt and pepper and roast for a further 10-12 minutes until the salmon is cooked through and the vegetables are tender.",
+        "Serve with a lemon wedge for squeezing over."
       ]
     },
     {
-      title: "Placeholder: Lean Beef Stir-fry",
-      description: "Quick, filling, and iron-rich — to be refined later.",
+      title: "Carbs-Last Beef Stir-fry",
+      description: "Quick, filling and iron-rich — the vegetables and beef hit the wok first, and the rice waits its turn.",
       tags: ["Protein", "Iron"],
+      meta: "Makes 1 portion | Prep 8 mins | Cook 8 mins",
       ingredients: [
         "200g lean beef strips",
-        "Mixed stir-fry vegetables",
+        "1 tbsp olive oil or sesame oil",
+        "2 cups mixed stir-fry vegetables (capsicum, broccoli, carrot, snow peas)",
+        "1 clove garlic, sliced",
+        "2.5cm piece ginger, sliced",
         "1 tbsp soy sauce",
-        "1/2 cup brown rice"
+        "½ cup cooked brown rice, warmed"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two."
+        "Heat the oil in a wok or large frying pan over high heat and stir-fry the beef for 2-3 minutes until browned. Remove and set aside.",
+        "Add the vegetables, garlic and ginger to the pan and stir-fry for 3-4 minutes until just tender.",
+        "Return the beef to the pan, add the soy sauce and toss to combine for 1 minute.",
+        "Serve the beef and vegetables first, with the warm brown rice alongside to finish the meal."
       ]
     },
     {
-      title: "Placeholder: Lentil & Vegetable Curry",
-      description: "A cosy, fibre-rich plant-based dinner — to be refined later.",
+      title: "Cosy Lentil & Vegetable Curry",
+      description: "A fibre-rich, plant-based dinner that tastes like a long-simmered curry but comes together in under half an hour.",
       tags: ["Fibre", "Iron", "Magnesium"],
+      meta: "Makes 2 portions | Prep 8 mins | Cook 20 mins",
       ingredients: [
-        "1 cup red lentils",
-        "Mixed vegetables",
-        "Coconut milk",
-        "Curry spices"
+        "1 tbsp olive oil",
+        "1 onion, finely chopped",
+        "2 cloves garlic, finely chopped",
+        "1 tbsp curry powder",
+        "1 cup red lentils, rinsed",
+        "1 x 400ml tin coconut milk",
+        "1 cup water",
+        "2 cups mixed vegetables (cauliflower, spinach, carrot), chopped",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two.",
-        "Placeholder method step three."
+        "Heat the olive oil in a large pan and fry the onion for 3-4 minutes until softened, then add the garlic and curry powder and cook for 1 minute more.",
+        "Stir in the lentils, coconut milk and water. Bring to a simmer and cook for 12 minutes, stirring occasionally.",
+        "Add the mixed vegetables and simmer for a further 5-8 minutes until the lentils and vegetables are tender.",
+        "Season with salt and pepper and serve warm."
       ]
     },
     {
-      title: "Placeholder: Tofu & Broccoli Bake",
-      description: "A simple bake for busy evenings — to be refined later.",
-      tags: ["Calcium", "Protein"],
+      title: "One-Pan Tofu & Broccoli Bake",
+      description: "A simple bake for busy evenings — golden tofu and broccoli with a sticky tahini-sesame glaze, ready with minimal washing up.",
+      tags: ["Calcium", "Protein", "Fibre"],
+      meta: "Makes 2 portions | Prep 8 mins | Cook 20 mins",
       ingredients: [
-        "1 block tofu",
-        "2 cups broccoli",
+        "1 block (about 300g) firm tofu, cubed",
+        "2 cups broccoli florets",
+        "1 tbsp olive oil",
         "1 tbsp tahini",
-        "Sesame seeds"
+        "1 tbsp soy sauce",
+        "1 tsp sesame seeds",
+        "Salt and pepper"
       ],
       method: [
-        "Placeholder method step one.",
-        "Placeholder method step two."
+        "Preheat oven to 200°C/180°C fan. Toss the tofu and broccoli with the olive oil on a baking tray and season with salt and pepper.",
+        "Bake for 15 minutes, turning halfway, until the tofu is golden and the broccoli is starting to char at the edges.",
+        "Whisk the tahini and soy sauce together, adding a splash of water if needed to loosen.",
+        "Drizzle the tahini mixture over the tray, scatter with sesame seeds and return to the oven for 2-3 minutes before serving."
       ]
     }
   ]
