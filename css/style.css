@@ -517,6 +517,30 @@ textarea:focus {
   color: var(--text-dim);
 }
 
+.topic-item {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.topic-item h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--blue);
+}
+
+.topic-item p {
+  color: var(--text);
+}
+
+.topic-note {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-style: italic;
+  color: var(--orange) !important;
+}
+
 .topic-placeholder-badge {
   display: inline-block;
   margin-top: 10px;

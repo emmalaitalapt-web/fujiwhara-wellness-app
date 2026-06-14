@@ -363,10 +363,22 @@
     TOPICS.forEach((topic) => {
       const card = document.createElement("div");
       card.className = "topic-card";
+
+      const itemsHtml = (topic.items || [])
+        .map((item) => `
+          <div class="topic-item">
+            <h4>${item.title}</h4>
+            <p>${item.text}</p>
+          </div>
+        `)
+        .join("");
+
       card.innerHTML = `
         <h3>${topic.title}</h3>
         <p>${topic.summary}</p>
-        <span class="topic-placeholder-badge">More coming soon</span>
+        ${itemsHtml}
+        ${topic.note ? `<p class="topic-note">${topic.note}</p>` : ""}
+        ${!topic.items ? `<span class="topic-placeholder-badge">More coming soon</span>` : ""}
       `;
       list.appendChild(card);
     });
