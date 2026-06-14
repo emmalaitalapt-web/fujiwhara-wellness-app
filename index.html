@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>Fujiwhara Wellness Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Fujiwhara Wellness Tracker</h1>
+  </header>
+
+  <main id="app">
+    <!-- DAILY TRACKER -->
+    <section id="view-tracker" class="view active">
+      <h2 class="view-title" id="tracker-date"></h2>
+
+      <div class="card">
+        <h3>Nutrition</h3>
+        <div class="field-row">
+          <label for="protein-input">Protein (g)</label>
+          <input type="number" id="protein-input" inputmode="numeric" min="0" placeholder="0" />
+        </div>
+        <div class="field-row">
+          <label for="fibre-input">Fibre (g)</label>
+          <input type="number" id="fibre-input" inputmode="numeric" min="0" placeholder="0" />
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Workout</h3>
+        <div class="toggle-row">
+          <button class="toggle-btn" data-toggle="strength">
+            <span class="toggle-check">✓</span> Strength trained
+          </button>
+          <button class="toggle-btn" data-toggle="cardio">
+            <span class="toggle-check">✓</span> Cardio
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Nutrient Checklist</h3>
+        <ul class="nutrient-list" id="nutrient-list"></ul>
+      </div>
+
+      <div class="card">
+        <h3>Water</h3>
+        <div class="water-tracker">
+          <button id="water-minus" class="water-btn" aria-label="Remove a glass">−</button>
+          <div class="water-glasses" id="water-glasses"></div>
+          <button id="water-plus" class="water-btn" aria-label="Add a glass">+</button>
+        </div>
+        <p class="water-label"><span id="water-count">0</span> / 8 glasses</p>
+      </div>
+
+      <div class="card">
+        <h3>Mood / Symptom Note <span class="optional">(optional)</span></h3>
+        <textarea id="mood-note" rows="3" placeholder="How are you feeling today?"></textarea>
+      </div>
+
+      <p class="save-status" id="save-status">Saved automatically</p>
+    </section>
+
+    <!-- CALENDAR / HISTORY -->
+    <section id="view-calendar" class="view">
+      <h2 class="view-title">History</h2>
+      <div class="calendar-header">
+        <button id="cal-prev" class="cal-nav" aria-label="Previous month">‹</button>
+        <h3 id="cal-month-label"></h3>
+        <button id="cal-next" class="cal-nav" aria-label="Next month">›</button>
+      </div>
+      <div class="calendar-grid" id="calendar-weekdays"></div>
+      <div class="calendar-grid" id="calendar-days"></div>
+    </section>
+
+    <!-- RECIPES -->
+    <section id="view-recipes" class="view">
+      <h2 class="view-title">Recipes</h2>
+      <div class="subtabs" id="recipe-subtabs">
+        <button class="subtab-btn active" data-recipe-tab="breakfast">Breakfast</button>
+        <button class="subtab-btn" data-recipe-tab="lunch">Lunch</button>
+        <button class="subtab-btn" data-recipe-tab="dinner">Dinner</button>
+      </div>
+      <div id="recipe-list" class="recipe-list"></div>
+    </section>
+
+    <!-- LIBRARY / TOPICS -->
+    <section id="view-library" class="view">
+      <h2 class="view-title">Library</h2>
+      <div id="topic-list" class="topic-list"></div>
+    </section>
+  </main>
+
+  <!-- Day summary modal -->
+  <div id="day-modal" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <h3 id="modal-date"></h3>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-view="tracker">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label">Today</span>
+    </button>
+    <button class="nav-btn" data-view="calendar">
+      <span class="nav-icon">📅</span>
+      <span class="nav-label">History</span>
+    </button>
+    <button class="nav-btn" data-view="recipes">
+      <span class="nav-icon">🍽️</span>
+      <span class="nav-label">Recipes</span>
+    </button>
+    <button class="nav-btn" data-view="library">
+      <span class="nav-icon">📚</span>
+      <span class="nav-label">Library</span>
+    </button>
+  </nav>
+
+  <script src="js/recipes-data.js"></script>
+  <script src="js/topics-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

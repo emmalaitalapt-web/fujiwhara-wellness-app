@@ -1,0 +1,619 @@
+:root {
+  --black: #0a0a0a;
+  --panel: #1a1a1a;
+  --orange: #F7941D;
+  --blue: #2D9CDB;
+  --text: #f5f5f5;
+  --text-dim: #b3b3b3;
+  --border: #2e2e2e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--black);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.4;
+  padding-bottom: 76px;
+}
+
+.app-header {
+  background: var(--black);
+  border-bottom: 3px solid var(--orange);
+  padding: 18px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--orange);
+  letter-spacing: 0.5px;
+}
+
+#app {
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.view-title {
+  color: var(--orange);
+  font-size: 1.4rem;
+  margin: 4px 0 16px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.field-row:last-child {
+  margin-bottom: 0;
+}
+
+.field-row label {
+  font-size: 1.05rem;
+  flex: 1;
+}
+
+.field-row input[type="number"] {
+  width: 90px;
+  font-size: 1.2rem;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--black);
+  color: var(--text);
+  text-align: center;
+}
+
+.field-row input[type="number"]:focus {
+  outline: 2px solid var(--orange);
+}
+
+/* Toggle buttons (workout) */
+.toggle-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--black);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.toggle-btn .toggle-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid var(--text-dim);
+  color: transparent;
+  flex-shrink: 0;
+}
+
+.toggle-btn.checked {
+  border-color: var(--orange);
+  background: rgba(247, 148, 29, 0.12);
+}
+
+.toggle-btn.checked .toggle-check {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: var(--black);
+}
+
+/* Nutrient checklist */
+.nutrient-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nutrient-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--black);
+  overflow: hidden;
+}
+
+.nutrient-item.checked {
+  border-color: var(--orange);
+}
+
+.nutrient-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nutrient-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nutrient-check .toggle-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid var(--text-dim);
+  color: transparent;
+}
+
+.nutrient-item.checked .nutrient-check .toggle-check {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: var(--black);
+}
+
+.nutrient-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 14px 0;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.05rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nutrient-label .expand-arrow {
+  color: var(--text-dim);
+  transition: transform 0.2s ease;
+}
+
+.nutrient-item.expanded .nutrient-label .expand-arrow {
+  transform: rotate(180deg);
+  color: var(--blue);
+}
+
+.nutrient-sources {
+  display: none;
+  padding: 0 16px 14px 16px;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  border-top: 1px solid var(--border);
+}
+
+.nutrient-item.expanded .nutrient-sources {
+  display: block;
+  padding-top: 10px;
+}
+
+/* Water tracker */
+.water-tracker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.water-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  background: var(--black);
+  color: var(--blue);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.water-glasses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  flex: 1;
+}
+
+.water-glass {
+  font-size: 1.8rem;
+  opacity: 0.25;
+}
+
+.water-glass.filled {
+  opacity: 1;
+}
+
+.water-label {
+  text-align: center;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--black);
+  color: var(--text);
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: 2px solid var(--orange);
+}
+
+.optional {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.save-status {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* Calendar */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.calendar-header h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+}
+
+.cal-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--orange);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  padding: 4px 0;
+}
+
+.calendar-day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: default;
+}
+
+.calendar-day.empty {
+  border: none;
+  background: none;
+}
+
+.calendar-day.has-entry {
+  cursor: pointer;
+  border-color: var(--orange);
+}
+
+.calendar-day.today {
+  box-shadow: inset 0 0 0 2px var(--blue);
+}
+
+.calendar-day .entry-dot {
+  position: absolute;
+  bottom: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* Sub tabs (recipes) */
+.subtabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.subtab-btn {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.subtab-btn.active {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(247, 148, 29, 0.1);
+  font-weight: 600;
+}
+
+/* Recipe cards */
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipe-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.recipe-card h3 {
+  margin: 0 0 6px;
+  color: var(--orange);
+  font-size: 1.15rem;
+}
+
+.recipe-desc {
+  color: var(--text-dim);
+  font-style: italic;
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(45, 156, 219, 0.15);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.recipe-card h4 {
+  margin: 12px 0 6px;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+}
+
+.recipe-card ul, .recipe-card ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.recipe-card li {
+  margin-bottom: 4px;
+}
+
+/* Topic cards */
+.topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.topic-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.topic-card h3 {
+  margin: 0 0 8px;
+  color: var(--orange);
+  font-size: 1.15rem;
+}
+
+.topic-card p {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+.topic-placeholder-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(247, 148, 29, 0.12);
+  color: var(--orange);
+  border: 1px solid var(--orange);
+}
+
+/* Bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 20;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 0 8px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+}
+
+.nav-btn.active {
+  color: var(--orange);
+}
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 30;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  background: var(--panel);
+  border: 1px solid var(--orange);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 420px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal h3 {
+  margin: 0 0 12px;
+  color: var(--orange);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--black);
+  color: var(--text);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row span:first-child {
+  color: var(--text-dim);
+}
