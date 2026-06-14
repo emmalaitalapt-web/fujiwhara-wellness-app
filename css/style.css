@@ -484,6 +484,14 @@ textarea:focus {
   margin-bottom: 4px;
 }
 
+.recipe-meta {
+  margin: 14px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
 /* Topic cards */
 .topic-list {
   display: flex;

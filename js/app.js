@@ -349,6 +349,7 @@
         <ul>${ingredientsHtml}</ul>
         <h4>Method</h4>
         <ol>${methodHtml}</ol>
+        ${recipe.meta ? `<p class="recipe-meta">${recipe.meta}</p>` : ""}
       `;
 
       list.appendChild(card);
