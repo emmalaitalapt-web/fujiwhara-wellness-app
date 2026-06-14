@@ -4,12 +4,58 @@
 const TOPICS = [
   {
     title: "Glucose & Insulin Resistance Basics",
-    summary: "Why blood sugar balance matters in perimenopause, and the basics of insulin resistance. Full content coming soon.",
+    summary: "Blood sugar swings get harder to manage during perimenopause as hormonal changes affect insulin sensitivity. Steadier glucose means more stable energy, fewer cravings, and better results from your training and nutrition.",
+    items: [
+      {
+        title: "1. Why It Matters in Perimenopause",
+        text: "As oestrogen declines, insulin sensitivity tends to drop, meaning the same meal can cause a bigger blood sugar spike than it used to. Bigger spikes mean bigger crashes: more cravings, more energy dips, more fat storage, and a harder time losing fat even when you are training hard and eating well. Steadying your glucose is one of the most powerful things you can do to feel better day to day and support body composition through this stage of life."
+      },
+      {
+        title: "2. Eat in the Right Order",
+        text: "The order you eat food in a meal changes how much your blood sugar rises. Eat vegetables or salad first to slow glucose absorption, then protein and healthy fats to improve fullness and reduce spikes, and save carbs (rice, bread, pasta, potato) for last. This order alone, with no other changes to what you eat, significantly flattens your glucose response."
+      },
+      {
+        title: "3. Never Eat Carbs Alone",
+        text: "'Naked' carbs (eaten on their own) cause the sharpest spikes. Always dress your carbs with protein or fat: apple with peanut butter, rice with chicken and olive oil, crackers with cheese, toast with eggs or avocado, fruit with yoghurt or nuts. Fat and protein blunt the glucose spike from the carbs."
+      },
+      {
+        title: "4. Start the Day Savoury",
+        text: "A sweet breakfast (cereal, toast and jam, smoothies) sets off an early glucose spike that can affect your energy and cravings for the rest of the day. Swap to eggs and veggies, Greek yoghurt and nuts, or leftover dinner. A savoury start stabilises energy from the get-go."
+      },
+      {
+        title: "5. Add Fibre Wherever You Can",
+        text: "Fibre slows glucose release throughout a meal. Add chia seeds to yoghurt, include vegetables in every meal, and add legumes like beans or lentils where you can. Small additions across the day add up."
+      }
+    ],
+    note: "Small swaps at every meal, in the right order, make the biggest difference over time."
     // Source: Fujiwhara_Glucose_Guide_FIXED_v3.pdf, glucose_goddess_fujiwhara.pdf
   },
   {
     title: "After-Meal Habits to Minimise Glucose Spikes",
-    summary: "Simple, practical things to do after eating to keep blood sugar steady. Full content coming soon.",
+    summary: "What you do in the 10 to 20 minutes around a meal has a big impact on how high your blood sugar rises and how quickly it settles back down.",
+    items: [
+      {
+        title: "1. Walk After Meals",
+        text: "A 10-minute walk after eating gets your muscles using glucose for fuel, which lowers blood sugar quickly. Even light movement counts: walking the block, pottering around the house, or doing light chores."
+      },
+      {
+        title: "2. Try Vinegar Before Meals",
+        text: "Mix 1 tablespoon of apple cider vinegar into a glass of water and drink it 10 to 20 minutes before a carb-containing meal, or use a vinegar-based dressing on your salad. It improves insulin sensitivity, leading to a smaller glucose spike."
+      },
+      {
+        title: "3. Save Dessert for After a Meal",
+        text: "If you are having something sweet, have it after a full meal rather than as a standalone snack. The slower digestion from the meal already in your system means a much smaller spike from the dessert."
+      },
+      {
+        title: "4. Ditch Sugary Drinks",
+        text: "Liquid sugar spikes glucose faster than almost any other source. Swap juice for whole fruit, soft drink for sparkling water, and flavoured drinks for water with lemon or lime."
+      },
+      {
+        title: "5. If You Only Do 3 Things",
+        text: "Feeling overwhelmed? Start with these: walk after meals, never eat carbs on their own, and switch to a savoury breakfast. These three habits have the highest impact and make everything else easier to layer on top."
+      }
+    ],
+    note: "Your blood sugar responds fast. A few consistent after-meal habits add up to steadier energy all day."
     // Source: Fujiwhara_Glucose_Guide_FIXED_v3.pdf, glucose_goddess_fujiwhara.pdf
   },
   {
