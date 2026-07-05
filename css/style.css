@@ -492,6 +492,49 @@ textarea:focus {
   font-size: 0.85rem;
 }
 
+/* Hormone label (no expand arrow, just a plain label) */
+.hormone-label {
+  flex: 1;
+  padding: 14px 16px 14px 0;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+/* Library dropdown nav */
+.library-nav-wrap {
+  position: sticky;
+  top: 66px;
+  z-index: 9;
+  background: var(--black);
+  padding: 8px 0 12px;
+}
+
+.library-nav-select {
+  width: 100%;
+  padding: 12px 36px 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23b3b3b3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.library-nav-select:focus {
+  outline: 2px solid var(--orange);
+}
+
+.library-nav-select option {
+  background: var(--panel);
+  color: var(--text);
+}
+
 /* Topic cards */
 .topic-list {
   display: flex;
@@ -504,6 +547,7 @@ textarea:focus {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
+  scroll-margin-top: 130px;
 }
 
 .topic-card h3 {

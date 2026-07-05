@@ -2,6 +2,13 @@
   const STORAGE_KEY = "fujiwhara-entries";
   const WATER_TARGET = 8;
 
+  const HORMONAL_MEDS = [
+    { id: "estrogen", label: "Estrogen" },
+    { id: "progesterone", label: "Progesterone" },
+    { id: "testosterone", label: "Testosterone" },
+    { id: "other", label: "Other" }
+  ];
+
   const NUTRIENTS = [
     { id: "omega3", label: "Omega-3", sources: "Salmon, sardines, walnuts, chia seeds, flaxseed, fish oil" },
     { id: "magnesium", label: "Magnesium", sources: "Pumpkin seeds, almonds, spinach, dark chocolate, magnesium supplement" },
@@ -39,6 +46,7 @@
       strength: false,
       cardio: false,
       nutrients: { omega3: false, magnesium: false, calcium: false, vitaminD: false, iron: false },
+      hormones: { estrogen: false, progesterone: false, testosterone: false, other: false },
       water: 0,
       note: ""
     };
@@ -46,12 +54,22 @@
 
   function getEntry(key) {
     const entries = loadEntries();
-    return entries[key] ? { ...defaultEntry(), ...entries[key], nutrients: { ...defaultEntry().nutrients, ...(entries[key].nutrients || {}) } } : defaultEntry();
+    return entries[key] ? {
+      ...defaultEntry(),
+      ...entries[key],
+      nutrients: { ...defaultEntry().nutrients, ...(entries[key].nutrients || {}) },
+      hormones: { ...defaultEntry().hormones, ...(entries[key].hormones || {}) }
+    } : defaultEntry();
   }
 
   function updateEntry(key, patch) {
     const entries = loadEntries();
-    const current = entries[key] ? { ...defaultEntry(), ...entries[key], nutrients: { ...defaultEntry().nutrients, ...(entries[key].nutrients || {}) } } : defaultEntry();
+    const current = entries[key] ? {
+      ...defaultEntry(),
+      ...entries[key],
+      nutrients: { ...defaultEntry().nutrients, ...(entries[key].nutrients || {}) },
+      hormones: { ...defaultEntry().hormones, ...(entries[key].hormones || {}) }
+    } : defaultEntry();
     const updated = { ...current, ...patch };
     entries[key] = updated;
     saveEntries(entries);
@@ -61,12 +79,14 @@
   function isEntryEmpty(entry) {
     if (!entry) return true;
     const nutrientsChecked = Object.values(entry.nutrients || {}).some(Boolean);
+    const hormonesChecked = Object.values(entry.hormones || {}).some(Boolean);
     return (
       !entry.protein &&
       !entry.fibre &&
       !entry.strength &&
       !entry.cardio &&
       !nutrientsChecked &&
+      !hormonesChecked &&
       !entry.water &&
       !entry.note
     );
@@ -123,6 +143,9 @@
 
     // Nutrient checklist
     renderNutrientList(entry);
+
+    // Hormonal medications
+    renderHormoneList(entry);
 
     // Water tracker
     renderWater(entry.water || 0);
@@ -183,6 +206,37 @@
 
       li.querySelector(".nutrient-label").addEventListener("click", () => {
         li.classList.toggle("expanded");
+      });
+
+      list.appendChild(li);
+    });
+  }
+
+  function renderHormoneList(entry) {
+    const list = document.getElementById("hormone-list");
+    list.innerHTML = "";
+    HORMONAL_MEDS.forEach((med) => {
+      const li = document.createElement("li");
+      li.className = "nutrient-item";
+      if (entry.hormones[med.id]) li.classList.add("checked");
+
+      li.innerHTML = `
+        <div class="nutrient-row">
+          <button class="nutrient-check" aria-label="Toggle ${med.label}">
+            <span class="toggle-check">✓</span>
+          </button>
+          <span class="hormone-label">${med.label}</span>
+        </div>
+      `;
+
+      li.querySelector(".nutrient-check").addEventListener("click", () => {
+        const current = getEntry(todayDateKey);
+        const newVal = !current.hormones[med.id];
+        const updated = updateEntry(todayDateKey, {
+          hormones: { ...current.hormones, [med.id]: newVal }
+        });
+        li.classList.toggle("checked", updated.hormones[med.id]);
+        flashSaveStatus();
       });
 
       list.appendChild(li);
@@ -286,6 +340,7 @@
       dateObj.toLocaleDateString(undefined, DATE_FORMAT);
 
     const checkedNutrients = NUTRIENTS.filter((n) => entry.nutrients[n.id]).map((n) => n.label);
+    const checkedHormones = HORMONAL_MEDS.filter((m) => entry.hormones[m.id]).map((m) => m.label);
     const workouts = [];
     if (entry.strength) workouts.push("Strength");
     if (entry.cardio) workouts.push("Cardio");
@@ -296,6 +351,7 @@
       <div class="summary-row"><span>Fibre</span><span>${entry.fibre ? entry.fibre + " g" : "—"}</span></div>
       <div class="summary-row"><span>Workout</span><span>${workouts.length ? workouts.join(", ") : "—"}</span></div>
       <div class="summary-row"><span>Nutrients</span><span>${checkedNutrients.length ? checkedNutrients.join(", ") : "—"}</span></div>
+      <div class="summary-row"><span>Hormonal Meds</span><span>${checkedHormones.length ? checkedHormones.join(", ") : "—"}</span></div>
       <div class="summary-row"><span>Water</span><span>${entry.water || 0} / ${WATER_TARGET} glasses</span></div>
       <div class="summary-row"><span>Note</span><span>${entry.note ? entry.note : "—"}</span></div>
     `;
@@ -360,9 +416,21 @@
   function initLibrary() {
     const list = document.getElementById("topic-list");
     list.innerHTML = "";
-    TOPICS.forEach((topic) => {
+
+    const select = document.getElementById("library-nav-select");
+    while (select.options.length > 1) select.remove(1);
+
+    TOPICS.forEach((topic, index) => {
+      const topicId = `topic-${index}`;
+
+      const option = document.createElement("option");
+      option.value = topicId;
+      option.textContent = topic.title;
+      select.appendChild(option);
+
       const card = document.createElement("div");
       card.className = "topic-card";
+      card.id = topicId;
 
       const itemsHtml = (topic.items || [])
         .map((item) => `
@@ -381,6 +449,14 @@
         ${!topic.items ? `<span class="topic-placeholder-badge">More coming soon</span>` : ""}
       `;
       list.appendChild(card);
+    });
+
+    select.addEventListener("change", () => {
+      const targetId = select.value;
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => { select.value = ""; }, 600);
     });
   }
 

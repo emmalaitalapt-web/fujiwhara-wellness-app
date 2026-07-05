@@ -57,6 +57,11 @@
       </div>
 
       <div class="card">
+        <h3>Hormonal Medications</h3>
+        <ul class="nutrient-list" id="hormone-list"></ul>
+      </div>
+
+      <div class="card">
         <h3>Mood / Symptom Note <span class="optional">(optional)</span></h3>
         <textarea id="mood-note" rows="3" placeholder="How are you feeling today?"></textarea>
       </div>
@@ -90,6 +95,11 @@
     <!-- LIBRARY / TOPICS -->
     <section id="view-library" class="view">
       <h2 class="view-title">Library</h2>
+      <div class="library-nav-wrap">
+        <select id="library-nav-select" class="library-nav-select">
+          <option value="">Jump to topic...</option>
+        </select>
+      </div>
       <div id="topic-list" class="topic-list"></div>
     </section>
   </main>
